@@ -1,12 +1,9 @@
 #!/bin/env/python3
 import logging
 import os
-import random
-import string
 from time import sleep
 
 import ffmpeg
-
 import requests
 
 # Define config variables
@@ -34,10 +31,6 @@ podcasts_client_user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) Ap
 
 class EpApiError(Exception):
     pass
-
-
-def _get_random_string(length=14):
-    return ''.join(random.choices(string.ascii_letters + string.digits, k=length + 1))
 
 
 def _get_episode_filename(episode_id):
