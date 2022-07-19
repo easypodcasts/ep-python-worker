@@ -86,7 +86,7 @@ def upload_converted_episode(episode_id):
     response = api_client.post(API_ENDPOINT_CONVERTED,
                                data={'id': episode_id},
                                files={'audio': open(episode_path, 'rb')})
-    if str(response.status_code).startswith('2'):
+    if response.status_code < 300:
         logging.info(f'Uploaded converted episode {episode_id}')
         return response.json()
     else:
