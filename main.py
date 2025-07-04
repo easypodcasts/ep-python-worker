@@ -34,7 +34,7 @@ class EpApiError(Exception):
 
 
 def _get_episode_filename(episode_id):
-    return f'episode_{episode_id}.opus'
+    return f'episode_{episode_id}.mp4'
 
 
 def _get_episode_path(episode_id):
@@ -68,6 +68,7 @@ def convert_episode(episode_id, episode_url):
     logging.info(f'Converting episode {episode_id} {episode_url}')
     stream = ffmpeg.input(episode_url, user_agent=podcasts_client_user_agent)
     stream = stream.output(_get_episode_path(episode_id),
+                           vn=None,
                            ac='1',
                            acodec='libopus',
                            audio_bitrate='24k',
